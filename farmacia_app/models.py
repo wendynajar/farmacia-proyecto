@@ -7,7 +7,7 @@ class Descuentos(models.Model):
     precio_final = models.DecimalField(max_digits=10, decimal_places=2)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()
-    activo = models.BooleanField()
+    #activo = models.BooleanField()
 
     class Meta:
         managed = False
@@ -67,3 +67,16 @@ class Usuarios(models.Model):
     class Meta:
         managed = False
         db_table = 'usuarios'
+
+class VistaDescuentos(models.Model):
+    id = models.AutoField(primary_key=True)
+    id_producto = models.ForeignKey('Productos', on_delete=models.CASCADE, db_column='id_producto')
+    porcentaje = models.IntegerField()
+    precio_final = models.DecimalField(max_digits=10, decimal_places=2)
+    fecha_inicio = models.DateField()
+    fecha_fin = models.DateField()
+    activo = models.BooleanField()
+
+    class Meta:
+        managed = False
+        db_table = 'vista_descuentos'
